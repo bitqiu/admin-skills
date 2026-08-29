@@ -1,6 +1,6 @@
 ---
 name: figma-to-design-md
-description: Analyze an existing Figma admin or operations product and create or incrementally maintain the project-root DESIGN.md with matching light and dark HTML previews. Use when asked to extract design rules, tokens, components, layouts, page patterns, or visual catalogs from Figma; do not use as a substitute for implementing Figma screens or redesigning the source file.
+description: Extract an admin design system from existing Figma evidence into project-root DESIGN.md with matching light and dark HTML previews. Use for design rules, tokens, components, and page patterns; not for implementing screens or redesigning Figma.
 ---
 
 # Figma to DESIGN.md

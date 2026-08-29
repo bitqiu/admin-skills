@@ -1,6 +1,6 @@
 ---
 name: prd-to-admin-design
-description: Create or extend Figma UI/UX designs for B2B admin, operations, and SaaS back-office systems from PRDs or ADMIN_SPEC.md, guided by DESIGN.md and existing Figma libraries. Use whenever the user asks to turn admin requirements into Figma pages, continue an existing admin style, or design user, order, merchant, finance, settings, or similar management modules. Do not use for Figma analysis or DESIGN.md extraction alone, or for implementing an already-complete Figma design in code.
+description: Create or extend Figma screens for B2B admin products from PRDs or ADMIN_SPEC.md while following DESIGN.md and existing Figma libraries. Use for requirements-to-design work; not for design-system extraction or frontend implementation.
 ---
 
 # PRD to Admin Design

@@ -1,7 +1,7 @@
 ---
 name: admin-workflow
 description: >-
-  编排后台管理系统从需求到设计、实现和验收的 AI 工作流。用户要求从 PRD 整理或搭建后台、根据 PRD 创建后台 Figma、从 Figma 提取 DESIGN.md、按 Figma 开发后台页面、评审后台 UI、同步 PRD/ADMIN_SPEC.md/DESIGN.md/Figma/代码之间的变更，或询问下一步该用哪个后台 Skill 时，应使用此 Skill，即使用户没有明确说“工作流”或“orchestrator”。它负责检测现有产物、判断影响范围，并在 prd-to-admin-spec、prd-to-admin-design、figma-to-design-md、figma-to-admin-page、admin-ui-review 之间选择最短正确路径；不亲自承担完整需求分析、Figma 设计、设计系统提取、页面编码或 UI 评审。
+  编排后台管理系统从 PRD 到 Figma、前端实现和验收的工作流。适用于跨阶段交付、变更同步或询问下一步；检测现有产物并选择最短有效路径，不代替各阶段专用 Skill。
 ---
 
 # Admin Workflow Orchestrator

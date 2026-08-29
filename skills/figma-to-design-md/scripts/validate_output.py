@@ -23,7 +23,26 @@ PLACEHOLDERS = re.compile(
     r"\b(?:TODO|TBD|lorem ipsum)\b|\[insert\b|\[figma file\]|\[pages, modes",
     re.IGNORECASE,
 )
-CUSTOM_PROPERTY = re.compile(r"--([a-zA-Z0-9_-]+)\s*:")
+CUSTOM_PROPERTY = re.compile(r"--([a-zA-Z0-9_-]+)\s*:\s*([^;}]+)")
+HTML_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
+CSS_COMMENT = re.compile(r"/\*.*?\*/", re.DOTALL)
+
+
+def strip_comments(text: str) -> str:
+    return CSS_COMMENT.sub("", HTML_COMMENT.sub("", text))
+
+
+def parse_custom_properties(text: str) -> dict[str, str]:
+    uncommented = strip_comments(text)
+    return {
+        name: re.sub(r"\s+", " ", value.strip())
+        for name, value in CUSTOM_PROPERTY.findall(uncommented)
+    }
+
+
+def token_is_documented(name: str, design_text: str) -> bool:
+    candidates = (f"--{name}", name, name.replace("-", "."))
+    return any(candidate in design_text for candidate in candidates)
 
 
 class PreviewParser(HTMLParser):
@@ -61,11 +80,12 @@ def validate_design(path: Path) -> list[str]:
     return errors
 
 
-def validate_preview(path: Path) -> tuple[list[str], set[str]]:
+def validate_preview(path: Path) -> tuple[list[str], dict[str, str]]:
     errors: list[str] = []
     text = path.read_text(encoding="utf-8")
+    uncommented = strip_comments(text)
     parser = PreviewParser()
-    parser.feed(text)
+    parser.feed(uncommented)
 
     if not re.match(r"\s*<!doctype html>", text, re.IGNORECASE):
         errors.append(f"{path.name} is missing an HTML5 doctype")
@@ -78,16 +98,16 @@ def validate_preview(path: Path) -> tuple[list[str], set[str]]:
     for tag in ("style", "main", "section"):
         if tag not in parser.tags:
             errors.append(f"{path.name} must contain a <{tag}> element")
-    if "@media" not in text:
+    if "@media" not in uncommented:
         errors.append(f"{path.name} must include responsive CSS")
-    if ":focus-visible" not in text:
+    if ":focus-visible" not in uncommented:
         errors.append(f"{path.name} must define a visible :focus-visible state")
-    if "prefers-reduced-motion" not in text:
+    if "prefers-reduced-motion" not in uncommented:
         errors.append(f"{path.name} must handle reduced-motion preferences")
     if PLACEHOLDERS.search(text):
         errors.append(f"{path.name} contains placeholder text")
 
-    properties = set(CUSTOM_PROPERTY.findall(text))
+    properties = parse_custom_properties(text)
     if len(properties) < 8:
         errors.append(f"{path.name} must expose at least eight CSS custom properties")
     return errors, properties
@@ -104,18 +124,41 @@ def validate_output(root: Path) -> list[str]:
     if errors:
         return errors
 
-    errors.extend(validate_design(root / "DESIGN.md"))
+    design_path = root / "DESIGN.md"
+    design_text = design_path.read_text(encoding="utf-8")
+    errors.extend(validate_design(design_path))
     light_errors, light_properties = validate_preview(root / "preview.html")
     dark_errors, dark_properties = validate_preview(root / "preview-dark.html")
     errors.extend(light_errors)
     errors.extend(dark_errors)
 
-    if (root / "preview.html").read_bytes() == (root / "preview-dark.html").read_bytes():
-        errors.append("Light and dark previews must not be identical")
-    shared_properties = light_properties & dark_properties
+    shared_properties = light_properties.keys() & dark_properties.keys()
     if len(shared_properties) < 8:
         errors.append(
             "Light and dark previews must share at least eight semantic CSS token names"
+        )
+    else:
+        changed_properties = {
+            name
+            for name in shared_properties
+            if light_properties[name] != dark_properties[name]
+        }
+        required_changes = min(3, len(shared_properties))
+        if len(changed_properties) < required_changes:
+            errors.append(
+                "Light and dark previews must differ in at least "
+                f"{required_changes} shared theme token values"
+            )
+
+    undocumented = sorted(
+        name
+        for name in shared_properties
+        if not token_is_documented(name, design_text)
+    )
+    if undocumented:
+        errors.append(
+            "Shared preview tokens are missing from DESIGN.md: "
+            + ", ".join(f"--{name}" for name in undocumented)
         )
     return errors
 

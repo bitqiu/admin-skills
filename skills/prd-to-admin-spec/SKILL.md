@@ -1,7 +1,7 @@
 ---
 name: prd-to-admin-spec
 description: >-
-  将后台管理系统 PRD、产品需求文档、API 文档、数据模型、数据库结构或已有后台说明转换为结构化、可追踪的 ADMIN_SPEC.md。用户要求“根据 PRD 设计后台”“分析 PRD 有哪些后台页面”“生成后台页面规格”“整理后台管理系统页面”“PRD 转后台 UI Spec”，或需要在 Figma / 前端实现之前提取后台模块、菜单、页面、表格、筛选、表单、详情、弹窗、操作、状态、权限和异常态时，应使用此 Skill，即使用户没有明确提到 ADMIN_SPEC.md。若任务只是创建或修改 Figma、编写 React/Vue 页面、定义视觉风格、生成 DESIGN.md、设计营销页面，或实现非后台管理产品，且不需要先产出后台页面规格，则不应使用此 Skill。
+  将后台管理系统的 PRD、API、数据模型或现有说明转换为结构化、可追踪的 ADMIN_SPEC.md。适用于整理模块、页面、字段、交互、权限和状态；不用于视觉设计、DESIGN.md 提取或前端实现。
 ---
 
 # PRD to Admin Specification

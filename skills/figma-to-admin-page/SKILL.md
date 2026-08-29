@@ -1,13 +1,14 @@
 ---
 name: figma-to-admin-page
 description: >-
-  根据已有 Figma 后台管理设计稿，在现有 React、Vue 或其他后台 Web 前端项目中实现 production-ready 页面。用户要求“根据这个 Figma 实现页面”“Figma 转前端”“实现 Figma 中这个后台页面”“按照设计稿开发后台”“根据 Figma node 开发 React/Vue 页面”“还原后台设计稿”，或提供 Figma frame/node 并要求把后台页面落入现有代码库时，应使用此 Skill。它会结合 Figma 视觉、DESIGN.md 设计系统、ADMIN_SPEC.md 业务交互和现有工程组件完成真实页面，而不是生成孤立 HTML Demo。若用户只要求提取 Design System、生成或更新 DESIGN.md，或要求在 Figma 中重新设计页面，则不要使用此 Skill。
-compatibility: 需要能够读取目标前端项目；读取 Figma 时使用当前环境提供的 Figma MCP 或 Figma Skills，并遵守其既有工作流。
+  根据指定 Figma frame/node 在现有 React、Vue 或其他后台 Web 项目中实现生产级页面。结合 DESIGN.md、ADMIN_SPEC.md 和已有组件；不用于单独提取设计系统、修改 Figma 或生成孤立 HTML demo。
 ---
 
 # Figma to Admin Page
 
 把已有 Figma 后台页面落入当前前端项目，产出符合项目架构、可维护、可扩展并具备合理交互与状态的真实页面。Figma 不是待描摹的截图；先理解设计结构和工程结构，再选择正确的 Web 布局与现有组件实现。
+
+需要能够读取目标前端项目。读取 Figma 时使用当前环境提供的 Figma MCP 或 Figma Skills，并遵守其既有工作流。
 
 ## Scope
 

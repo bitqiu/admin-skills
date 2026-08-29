@@ -1,7 +1,7 @@
 ---
 name: admin-ui-review
 description: >-
-  审查后台管理系统从 PRD、ADMIN_SPEC、DESIGN.md、Figma 到前端代码的需求追踪、设计还原、Design System 一致性与实现质量。用户要求检查后台页面、核对是否符合 PRD、检查设计稿是否漏需求、对比 Figma 和代码、Review UI、检查 DESIGN.md 是否被遵守、检查后台开发质量、检查 Figma 还原度，或要求检查并修复上述问题时，应使用此 Skill。即使材料不完整，也应基于现有证据完成可验证部分并明确未验证项。仅做审查时不得修改代码、设计稿或需求；只有用户明确要求修复时才实施修改。
+  审查后台管理系统从 PRD、ADMIN_SPEC、DESIGN.md、Figma 到前端代码的需求追踪、设计还原和实现质量。适用于 UI review、一致性核对及明确要求的 review-and-fix；仅审查时不得修改产物。
 ---
 
 # Admin UI Review

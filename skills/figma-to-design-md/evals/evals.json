@@ -1,0 +1,45 @@
+{
+  "skill_name": "figma-to-design-md",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "分析我提供的运营后台 Figma 文件，创建项目根目录的 DESIGN.md、preview.html 和 preview-dark.html。请覆盖变量、表格、筛选器、表单、Drawer、状态和典型列表页；Figma 有完整 light mode，但没有 dark mode。不要修改 Figma，也不要实现业务页面。",
+      "expected_output": "Creates a mutually consistent design-system document and two standalone previews from bounded Figma evidence, while clearly labeling dark mode as a proposed mapping and leaving the source Figma and application code unchanged.",
+      "files": [],
+      "expectations": [
+        "Reads the extraction, schema, and preview references before producing output.",
+        "Samples variables, canonical components, and representative pages without crawling the Figma file without bounds.",
+        "Distinguishes verified tokens, derived rules, and unresolved inconsistencies with usable Figma references.",
+        "Creates DESIGN.md, preview.html, and preview-dark.html together at the project root.",
+        "Labels dark mode as a Proposed Dark Mapping in both documentation and preview rather than claiming it exists in Figma.",
+        "Runs deterministic validation and visually inspects both themes at desktop and mobile widths."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "现有项目已经有 DESIGN.md 和明暗两个 preview。请根据新版 Figma 增量更新：按钮圆角和表格密度变了，其他 token 与页面模式仍有效。保留已有的代码映射和产品特有示例，不要重写成通用组件展板。",
+      "expected_output": "Performs an evidence-backed incremental update that changes the affected button and table rules across all three artifacts while preserving supported guidance, code mappings, and product-specific preview specimens.",
+      "files": [],
+      "expectations": [
+        "Reads all three existing artifacts before inspecting the changed Figma evidence.",
+        "Preserves still-supported tokens, prose, code mappings, and product-specific specimens.",
+        "Updates button radius and table density consistently in DESIGN.md and both previews.",
+        "Moves unresolved conflicts to Design Inconsistencies instead of silently normalizing them.",
+        "Reports the sampled evidence, incremental scope, validation performed, and remaining gaps."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "我只有两张后台页面截图，拿不到结构化 Figma 数据。请从截图整理一份可供开发参考的设计规范和预览，但不要把估算的颜色、间距或组件尺寸写成 Figma verified token。",
+      "expected_output": "Builds a useful but explicitly lower-confidence design-system suite from screenshots, classifying visual estimates as derived or unresolved and never presenting them as verified Figma definitions.",
+      "files": [],
+      "expectations": [
+        "Continues from screenshot evidence without claiming structured Figma access.",
+        "Marks estimated values as Derived Rule or Unresolved rather than Verified Token.",
+        "Keeps the evidence scope bounded to what the supplied screenshots support.",
+        "Produces internally consistent DESIGN.md and previews with visible evidence-status notes.",
+        "Records inaccessible variables, components, states, and responsive behavior as unresolved gaps."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "PRD to Admin Spec"
+  short_description: "Turn admin requirements into a traceable UI specification"
+  default_prompt: "Use $prd-to-admin-spec to convert these admin requirements into a structured and traceable ADMIN_SPEC.md."
