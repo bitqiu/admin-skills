@@ -1,0 +1,41 @@
+{
+  "skill_name": "prd-to-admin-design",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请读取当前项目的 ADMIN_SPEC.md 和 DESIGN.md，并在我指定的现有 Figma 后台文件中新增订单管理模块。需要订单列表、订单详情和退款拒绝确认弹窗；列表筛选项和字段以 ADMIN_SPEC 为准，沿用现有侧边栏、表格、Badge 和分页组件。",
+      "expected_output": "Extends the existing Figma admin file with requirement-complete order list and detail screens plus a risk-aware refund rejection confirmation, while reusing the established shell, components, variables, and styles.",
+      "files": [],
+      "expectations": [
+        "The run reads available ADMIN_SPEC.md and DESIGN.md before designing and treats them as business-scope and design-language sources respectively.",
+        "The Figma result covers every specified order filter, table column, action, detail section, status, and rejection-dialog requirement.",
+        "The new frames reuse the existing admin shell, table, badge, and pagination components instead of introducing visually duplicate components.",
+        "The refund rejection flow identifies the affected order, consequence, required reason, and destructive confirmation state."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "根据 PRD.md，在现有运营后台 Figma 里继续设计用户管理：用户列表、用户详情、封禁账号 Drawer。详情要有基本信息、账户信息、风险信息、关联订单和操作记录。请保持已有后台风格，不要另起一套组件。",
+      "expected_output": "Creates a dense, coherent user-management flow in the existing Figma system, including semantic detail sections and a clearly risk-bearing account-ban drawer.",
+      "files": [],
+      "expectations": [
+        "The user detail design separates the five required information domains instead of placing all fields in one generic card.",
+        "The account-ban drawer communicates scope, impact, reason, permissions or availability, and a proportionate confirmation step.",
+        "Important loading, empty, error, permission, and destructive states have explicit component rules or focused specimens.",
+        "Meaningful layers use semantic names and primary layouts use Auto Layout with deliberate sizing behavior."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "请按 ADMIN_SPEC.md 给财务后台补齐商户余额管理页面。需要按商户、状态、币种和时间范围筛选，表格展示可用余额、冻结余额、最近变动时间，并支持查看流水和人工调账。已有 Figma 有 Filter、Table、Drawer、Modal 组件，请直接复用。",
+      "expected_output": "Adds a finance-oriented balance-management screen and manual-adjustment flow that prioritize precise numeric comparison, auditability, and safe handling of consequential actions.",
+      "files": [],
+      "expectations": [
+        "Filters use controls appropriate to entity, status, enum, and date-range fields and keep active advanced criteria discoverable.",
+        "Money columns are consistently formatted and aligned with explicit currency treatment, while date-time follows one established convention.",
+        "Row actions prioritize the frequent action and place secondary actions in an overflow menu rather than spreading buttons across the row.",
+        "The manual adjustment flow shows current balance, adjustment direction and amount, resulting balance, currency, reason, and audit impact before confirmation."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figma to DESIGN.md"
+  short_description: "Extract an admin design system with visual previews"
+  default_prompt: "Use $figma-to-design-md to analyze this Figma admin system and create or update DESIGN.md, preview.html, and preview-dark.html at the project root."

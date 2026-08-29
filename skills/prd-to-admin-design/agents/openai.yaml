@@ -1,0 +1,4 @@
+interface:
+  display_name: "PRD to Admin Design"
+  short_description: "Turn admin requirements into consistent Figma screens"
+  default_prompt: "Use $prd-to-admin-design to turn this admin PRD into Figma screens that reuse the existing design system."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Admin Workflow"
+  short_description: "Route admin work across requirements, Figma, code, and review"
+  default_prompt: "Use $admin-workflow to inspect the current admin project state and execute the shortest valid workflow for this request."

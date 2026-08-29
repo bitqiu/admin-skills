@@ -1,0 +1,40 @@
+{
+  "skill_name": "admin-workflow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "项目根目录已有 PRD.md，但没有 ADMIN_SPEC.md。请读取 PRD，整理这个后台需要哪些页面。只需要页面规格，不要创建 Figma，也不要写前端代码。请只给出你会执行的路由决定，不要实际修改文件。",
+      "expected_output": "只选择 prd-to-admin-spec，并明确以 ADMIN_SPEC.md 为停止点。",
+      "files": [],
+      "expectations": [
+        "路由只包含 prd-to-admin-spec",
+        "明确在 ADMIN_SPEC.md 完成后停止",
+        "路由决定不包含 prd-to-admin-design、figma-to-design-md、figma-to-admin-page 或 admin-ui-review"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我们有一个可访问的 Figma 用户管理 frame 和一个现有 React 后台项目，ADMIN_SPEC.md 已存在，但 DESIGN.md 还没有。请按这个 Figma 实现用户管理页；后续整个后台也要沿用这套设计。请只给出你会执行的路由决定，不要实际修改文件。",
+      "expected_output": "先从目标 Figma 提取 DESIGN.md，再调用 figma-to-admin-page；复用现有 ADMIN_SPEC.md，不重新从 PRD 生成规格或重新设计 Figma。",
+      "files": [],
+      "expectations": [
+        "路由顺序是 figma-to-design-md 后接 figma-to-admin-page",
+        "将长期跨页面设计一致性作为生成 DESIGN.md 的理由",
+        "复用现有 ADMIN_SPEC.md",
+        "路由决定不包含 prd-to-admin-spec 或 prd-to-admin-design"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "根据这个 Figma 开发订单详情后台页面。仓库里有 Vue 项目和 DESIGN.md，但消息里没有 Figma 链接、文件名、page、frame 或 node，也无法从项目文件识别对应设计。请只给出你会执行的路由决定，不要实际修改文件。",
+      "expected_output": "识别 Figma target 是关键缺失对象，停止实现分支并请求用户提供可识别目标，不凭空设计，也不调用无关上游阶段。",
+      "files": [],
+      "expectations": [
+        "明确指出缺少可识别的 Figma target frame 或 node",
+        "在调用 figma-to-admin-page 前停止",
+        "不凭空创造设计",
+        "路由决定不包含 prd-to-admin-spec、prd-to-admin-design 或 figma-to-design-md 作为替代"
+      ]
+    }
+  ]
+}

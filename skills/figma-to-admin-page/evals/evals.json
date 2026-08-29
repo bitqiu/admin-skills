@@ -1,0 +1,23 @@
+{
+  "skill_name": "figma-to-admin-page",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请根据这个 Figma node 实现商户审核列表页：https://www.figma.com/design/example/Ops?node-id=120-450。目标是当前仓库里的 React 管理后台，路由为 /merchants/review。先读 DESIGN.md 和 ADMIN_SPEC.md，优先复用项目现有 DataTable、SearchInput、StatusBadge 和权限组件。需要实现名称搜索、审核状态筛选、分页、行操作，以及 loading、empty、error 三种状态。没有真实接口的部分用现有 mock 惯例处理，不要做独立 HTML。",
+      "expected_output": "Reads the target Figma frame and the existing React project before coding; maps Figma layers to existing components; implements and routes a maintainable merchant review page using project tokens, components, icons, mock conventions, interactions, and required states; verifies the rendered page against Figma, DESIGN.md, and ADMIN_SPEC.md.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "把 Figma 里的订单退款详情页还原到这个 Vue 3 后台项目中，目标 frame 是 node-id=880:31。项目使用 Composition API、Pinia、Element Plus 的二次封装和 CSS variables。ADMIN_SPEC.md 规定驳回退款必须填写原因，并且部分字段只有 finance:refund 权限可见。请沿用现有订单详情页模式，补齐 drawer、表单校验、权限态和失败重试，不要新增 UI 库。",
+      "expected_output": "Inspects the Vue architecture and a similar order detail page, follows the available Figma reading workflow, reuses the project's Element Plus wrappers and CSS variables, implements the target detail page with required validation, permission visibility, drawer and retry behavior, and performs project and visual verification without adding a UI dependency.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "根据 Figma 里的用户管理页开发前端。设计稿包含搜索、角色筛选、用户表格、状态标签、批量禁用、分页和编辑弹窗。当前项目没有 API，这次只需要可交互 UI demo，但必须放进现有 /settings/users 路由并复用已有组件。桌面 1280px 和 1440px 都不能破版，表格窄时按项目现有方式横向滚动。请不要把 mock 用户数组直接塞在页面 JSX 里。",
+      "expected_output": "Implements an interactive routed admin page inside the existing project rather than a standalone demo; reuses discovered components and icon library; keeps mock data separated according to local conventions; supports search, filter, selection, pagination, dialog and required UI states; verifies stable desktop layout and project-standard table overflow behavior.",
+      "files": []
+    }
+  ]
+}

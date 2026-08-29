@@ -1,0 +1,4 @@
+interface:
+  display_name: "Admin UI Review"
+  short_description: "Review admin UI requirements, design fidelity, and code quality"
+  default_prompt: "Use $admin-ui-review to trace this admin page from PRD through Figma to code and report requirement, design-system, and implementation issues."

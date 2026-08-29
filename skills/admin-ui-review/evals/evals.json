@@ -1,0 +1,44 @@
+{
+  "skill_name": "admin-ui-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请 review 当前仓库的用户管理列表页，只检查不要改代码。对照 docs/user-prd.md、ADMIN_SPEC.md、DESIGN.md 和 Figma 里的 User List frame，确认表格字段、筛选、操作、页面间距以及代码实现是否一致。PRD 要求 Phone、Status、Balance、Register Time 四列，请特别检查需求有没有在中间链路丢失。",
+      "expected_output": "Produces a concise evidence-backed review without modifying files; traces each requirement across the available artifacts, reports any missing Register Time link at the correct severity, and uses the requested Summary/Critical/Major/Minor/Fixed/Remaining structure.",
+      "files": [],
+      "expectations": [
+        "The response states that the mode is review only and does not modify source files.",
+        "The response reports source availability and distinguishes missing evidence from confirmed defects.",
+        "Each reported finding includes Expected, Actual, Location, and Action.",
+        "The response includes traceability coverage from the PRD requirement through the code route.",
+        "The Fixed section states that nothing was fixed in review-only mode."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "检查并修复订单后台详情页的 Figma 还原度和开发质量。DESIGN.md 规定 page padding 24px、按钮圆角 6px、图标统一用 Lucide；现在页面看起来间距不对，而且开发新写了一套 OrderStatusTag。请对比 Figma、现有共享组件和 /admin/orders/:id 的实现，先处理会影响操作的错误，再处理设计系统偏差，最后跑相关测试。不要为了 1px 差异重构整个页面。",
+      "expected_output": "Reviews first, then applies scoped fixes in Critical/Major/Minor order, reuses suitable existing tokens/components, avoids broad refactoring for negligible differences, verifies the changed route, and separates fixed from blocked or remaining items.",
+      "files": [],
+      "expectations": [
+        "The response classifies the task as review-and-fix mode.",
+        "Fixes are prioritized by severity and are limited to evidence-backed issues.",
+        "The review checks the 24px padding, 6px radius, Lucide usage, and potential duplicate OrderStatusTag against actual project evidence.",
+        "The response records verification performed after fixes.",
+        "Any item requiring unavailable product or design decisions remains in Remaining rather than being guessed."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "帮我检查财务后台页面是否符合 PRD 和 DESIGN.md。仓库里能找到代码和文档，但我暂时没有 Figma 权限。重点看退款审批权限、金额展示、确认弹窗、表格密度和响应式，不要改任何东西。",
+      "expected_output": "Completes all verifiable PRD, design-system, and implementation checks without blocking on Figma; marks Figma fidelity as unverified, elevates genuine refund/permission risks appropriately, and avoids claiming visual fidelity without evidence.",
+      "files": [],
+      "expectations": [
+        "The response continues with available PRD, DESIGN.md, and code evidence despite unavailable Figma access.",
+        "Figma fidelity is explicitly marked unverified rather than passed or failed.",
+        "Refund approval, amount semantics, and destructive confirmation risks are classified by business impact.",
+        "The response does not modify files.",
+        "The output follows the required concise review sections and finding fields."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figma to Admin Page"
+  short_description: "Implement Figma admin screens in an existing frontend"
+  default_prompt: "Use $figma-to-admin-page to implement this Figma admin frame in the current React or Vue project, reusing its components and conventions."
